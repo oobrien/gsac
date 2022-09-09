@@ -1,0 +1,142 @@
+# Terms of Use
+
+## Copyright Information
+
+The Department for Communities and Local Government has published
+these data in order to provide information about the energy
+performance of buildings.  The publication of these data is intended
+to contribute to delivering the Government’s policies to adapt to the
+effects of climate change and reduce greenhouse gas emissions.  It
+will provide data to facilitate improvements in the energy efficiency
+of buildings through research, improved management and innovation.
+
+### Royal Mail Copyright notice
+
+These data include addresses and postcodes in which intellectual
+property rights are owned by Royal Mail Group Limited (‘address
+data’).  The Department for Communities and Local Government has
+published the address data with the consent of Royal Mail Group
+Limited, which reserves all its copyright, database rights, trade
+marks and other intellectual property rights.
+
+Royal Mail Group Limited permits the use of ‘address data’ for
+specific purposes related to the energy performance of buildings which
+are as follows:
+
+ - The effective management of properties in the private or public
+   sector with a view to promoting energy efficiency (through
+   consideration of factors such as patterns of use, maintenance,
+   repairs, improvements and upgrades of building structure or energy
+   using systems).
+ - Research to provide data, analysis and statistics intended to
+   improve the understanding of energy efficiency of buildings or to
+   facilitate innovation and improvement in use, design, materials and
+   equipment to this end.
+ - Research into the effectiveness or impact of energy efficiency
+   improvements including those delivered through Government or other
+   energy improvement programmes.  Promoting and marketing energy
+   efficiency improvements that may be made through a Government energy
+   efficiency programme or initiative.
+ - Promotion and better understanding of the current energy efficiency
+   of buildings and potential improvement in the building sale or
+   rental markets and/or by building occupiers or users.
+ - To enable enforcement authorities to carry out enforcement duties
+   as required by the Energy Performance of Buildings Regulations
+   (England and Wales) 2012 (SI 2012/3118).
+ - By local authorities in the exercise of their duties under section
+   91 of the Building Act 1984, or an approved inspector for the
+   purposes of the inspector’s functions under Part 2 of the Building
+   Act 1984.
+ - For the prevention or detection of crime, the apprehension or
+   prosecution of alleged offenders, any proceedings in a court or
+   tribunal or complying with an order or a court or a tribunal.
+
+In addition to the purposes set out above there are certain exceptions
+to copyright which permit you to use copyrighted material for specific
+and limited purposes. These include non-commercial research and
+private study, subject to compliance with certain conditions. Further
+information about these exceptions can be found here:
+
+https://www.gov.uk/guidance/exceptions-to-copyright
+
+Where you publish or otherwise share address data with any other
+person for any of the purposes permitted under this copyright notice,
+you must include a copy of this copyright notice with the data.
+
+Any use of address data which is not specified in this notice or
+covered by one of the copyright exceptions requires an appropriate
+license and is subject to Royal Mail Group Limited’s relevant terms
+and conditions listed at:
+
+http://www.poweredbypaf.com/
+
+By using address data on this website you will be taken to agree to
+the terms set out in this copyright notice. Failure to comply with
+this copyright notice may lead to Royal Mail Group Limited taking
+legal action against you.
+
+You can contact Royal Mail at address.management@royalmail.com.
+
+### Non-Address Data
+
+All data fields other than the address and postcode data (ADDRESS1, ADDRESS2,
+ADDRESS3, POSTCODE) available via this website are licensed under
+the Open Government Licence v3.0.
+
+http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+
+
+## Data Protection Act 1998
+
+Address level data concerning the energy performance of buildings
+constitute personal data for the purposes of the Data Protection Act
+1998. Anyone using personal data must comply with the eight Data
+Protection Principles contained in that Act before personal data can
+be processed.
+
+These principles are as follows:
+
+
+1. Personal data shall be processed fairly and lawfully and shall not
+   be processed unless one or more conditions established in the Act
+   is met.
+2. Personal data shall be obtained only for one or more specified and
+   lawful purposes and shall not be processed in any manner
+   incompatible with that purpose or those purposes.
+3. Personal data shall be adequate, relevant and not excessive in
+   relation to the purpose or purposes for which they are processed.
+4. Personal data shall be accurate and where necessary, kept up to
+   date.
+5. Personal data processed for any purpose or purposes shall not be
+   kept for longer than is necessary for that purposes or those
+   purposes.
+6. Personal data shall be processed in accordance with the data
+   subject's rights under the Act.
+7. Appropriate technical and organisational measures shall be taken
+   against unauthorised or unlawful processing of personal data and
+   against accidental loss or destruction of, or damage to, personal
+   data.
+8. Personal data shall not be transferred to a country or territory
+   outside the European Economic Area unless that country or territory
+   ensures an adequate level of protection for the rights and freedoms
+   of data subjects in relation to the processing of personal data.
+
+Personal data that is processed only for research, statistical or
+historical purposes may be exempt from principles (2) and (5).
+
+Please be aware that under the rights of data subjects in the Data Protection
+Act 1998 an individual may make a subject access request.  This
+entitles the data subject to obtain information that includes whether
+his or her data are being processed, a description of the data, the
+purposes of the processing, to whom it is disclosed and the source of
+the data.  A fee may be payable for the request, which must be
+complied with within a specified period.
+
+Please note that the Department will be adhering to the conditions of the Data
+Protection Act 1998 when retaining your e-mail address used for this registration.
+
+For further information on the operation of the Data Protection Act
+1998 please consult the website of the Information Commissioner’s
+Office:
+
+https://ico.org.uk

@@ -1,0 +1,81 @@
+map	type	code	colour	name	order1	order2	penportrait
+oac01	Supergroup	1	Blue Collar Communities	#800000	1	100	Housing in these areas is more likely to be terraced housing rather than flats and residents mainly rent from the public sector (social housing). There is a high proportion of young people, especially children. This group tends to be lower qualified with fewer higher educational qualifications than the national average. A higher proportion work in manufacturing, retail or construction.
+oac01	Supergroup	2	City Living	#808080	2	200	These people are urban residents who are more likely to be single and living alone. They are more likely to be students, recent graduates or young professionals aged 24-44). They are more likely to hold higher educational qualifications, and are often students and or first generation immigrants the UK and students. Housing is often made up of flats and residents typically rent from the private sector.
+oac01	Supergroup	3	Countryside	#b0d080	3	300	Rural and semi rural residents, many working from home. Employment in agricultural and fishing (coastal areas) is higher than the national average. Residents often live in detached houses, and in households with more than one car.
+oac01	Supergroup	4	Prospering Suburbs	#ff0000	4	400	These are prosperous people who are have established themselves in the workplace. They often live in detached houses, most privately owned, with either older children who have left home. These households have access to more than one cars.
+oac01	Supergroup	5	Constrained by Circumstances	#0080ff	5	500	Residents in this group are more likely to be marginalised or on welfare benefits. These people typically live in social housing, mostly flats. They likely to few qualifications. Many will be older workers or pensioners or those on benefits.
+oac01	Supergroup	6	Typical Traits	#ffff00	6	600	This is your average person, likely to own a home and come from a mix of households. They are more likely to be younger families and aspiring households, younger less established versions of Prospering semis. They donÃ¢â‚¬â„¢t work in any particular industry.
+oac01	Supergroup	7	Multicultural	#ff8000	7	700	Residents are often non-white, mainly from Asian or Black British backgrounds. Many are first time immigrants. Housing is a mix of social housing and private landlords, often in flats. This group is more reliant on public transport.
+oac01	Group	1a	Terraced Blue Collar	#800000	101	110	
+oac01	Group	1b	Younger Blue Collar	#802020	102	120	
+oac01	Group	1c	Older Blue Collar	#804040	103	130	
+oac01	Group	2a	Transient Communities	#808080	104	210	
+oac01	Group	2b	Settled in the City	#999999	105	220	
+oac01	Group	3a	Village Life	#b0d080	106	310	
+oac01	Group	3b	Agricultural	#c0e090	107	320	
+oac01	Group	3c	Accessible Countryside	#d0f0a0	108	330	
+oac01	Group	4a	Prospering Younger Families	#ff0000	109	410	
+oac01	Group	4b	Prospering Older Families	#ff2222	110	420	
+oac01	Group	4c	Prospering Semis	#ff4444	111	430	
+oac01	Group	4d	Thriving Suburbs	#ff6666	112	440	
+oac01	Group	5a	Senior Communities	#0080ff	113	510	
+oac01	Group	5b	Older Workers	#2090ff	114	520	
+oac01	Group	5c	Public Housing	#40a0ff	115	530	
+oac01	Group	6a	Settled Households	#ffff00	116	610	
+oac01	Group	6b	Least Divergent	#ffff22	117	620	
+oac01	Group	6c	Young Families in Terraced Homes	#ffff55	118	630	
+oac01	Group	6d	Aspiring Households	#ffff77	119	640	
+oac01	Group	7a	Asian Communities	#ff8000	120	710	
+oac01	Group	7b	Afro-Caribbean Communities	#ff9933	121	720	
+oac01	Subgroup	1a1	Terraced Blue Collar (1)	#800000	1001	111	
+oac01	Subgroup	1a2	Terraced Blue Collar (2)	#800808	1002	112	
+oac01	Subgroup	1a3	Terraced Blue Collar (3)	#801010	1003	113	
+oac01	Subgroup	1b1	Younger Blue Collar (1)	#802020	1004	121	
+oac01	Subgroup	1b2	Younger Blue Collar (2)	#802828	1005	122	
+oac01	Subgroup	1c1	Older Blue Collar (1)	#804848	1006	131	
+oac01	Subgroup	1c2	Older Blue Collar (2)	#804848	1007	132	
+oac01	Subgroup	1c3	Older Blue Collar (3)	#805050	1008	133	
+oac01	Subgroup	2a1	Transient Communities (1)	#808080	1009	211	
+oac01	Subgroup	2a2	Transient Communities (2)	#888888	1010	212	
+oac01	Subgroup	2b1	Settled in the City (1)	#999999	1011	221	
+oac01	Subgroup	2b2	Settled in the City (2)	#a0a0a0	1012	222	
+oac01	Subgroup	3a1	Village Life (1)	#b0d080	1013	311	
+oac01	Subgroup	3a2	Village Life (2)	#b8d888	1014	312	
+oac01	Subgroup	3b1	Agricultural (1)	#c0e090	1015	321	
+oac01	Subgroup	3b2	Agricultural (2)	#c8e898	1016	322	
+oac01	Subgroup	3c1	Accessible Countryside (1)	#d0f0a0	1017	331	
+oac01	Subgroup	3c2	Accessible Countryside (2)	#d8f8a8	1018	332	
+oac01	Subgroup	4a1	Prospering Younger Families (1)	#ff0000	1019	411	
+oac01	Subgroup	4a2	Prospering Younger Families (2)	#ff0808	1020	412	
+oac01	Subgroup	4b1	Prospering Older Families (1)	#ff2222	1021	421	
+oac01	Subgroup	4b2	Prospering Older Families (2)	#ff2828	1022	422	
+oac01	Subgroup	4b3	Prospering Older Families (3)	#ff3030	1023	423	
+oac01	Subgroup	4b4	Prospering Older Families (4)	#ff3838	1024	424	
+oac01	Subgroup	4c1	Prospering Semis (1)	#ff4444	1025	431	
+oac01	Subgroup	4c2	Prospering Semis (2)	#ff4c4c	1026	432	
+oac01	Subgroup	4c3	Prospering Semis (3)	#ff5454	1027	433	
+oac01	Subgroup	4d1	Thriving Suburbs (1)	#ff6666	1028	441	
+oac01	Subgroup	4d2	Thriving Suburbs (2)	#ff6e6e	1029	442	
+oac01	Subgroup	5a1	Senior Communities (1)	#0080ff	1030	511	
+oac01	Subgroup	5a2	Senior Communities (2)	#0888ff	1031	512	
+oac01	Subgroup	5b1	Older Workers (1)	#2090ff	1032	521	
+oac01	Subgroup	5b2	Older Workers (2)	#2898ff	1033	522	
+oac01	Subgroup	5b3	Older Workers (3)	#30a0ff	1034	523	
+oac01	Subgroup	5b4	Older Workers (4)	#38a8ff	1035	524	
+oac01	Subgroup	5c1	Public Housing (1)	#40a0ff	1036	531	
+oac01	Subgroup	5c2	Public Housing (2)	#48a8ff	1037	532	
+oac01	Subgroup	5c3	Public Housing (3)	#50b0ff	1038	533	
+oac01	Subgroup	6a1	Settled Households (1)	#ffff00	1039	611	
+oac01	Subgroup	6a2	Settled Households (2)	#ffff08	1040	612	
+oac01	Subgroup	6b1	Least Divergent (1)	#ffff22	1041	621	
+oac01	Subgroup	6b2	Least Divergent (2)	#ffff2b	1042	622	
+oac01	Subgroup	6b3	Least Divergent (3)	#ffff32	1043	623	
+oac01	Subgroup	6c1	Young Families in Terraced Homes (1)	#ffff55	1044	631	
+oac01	Subgroup	6c2	Young Families in Terraced Homes (2)	#ffff5e	1045	632	
+oac01	Subgroup	6d1	Aspiring Households (1)	#ffff77	1046	641	
+oac01	Subgroup	6d2	Aspiring Households (2)	#ffff80	1047	642	
+oac01	Subgroup	7a1	Asian Communities (1)	#ff8000	1048	711	
+oac01	Subgroup	7a2	Asian Communities (2)	#ff8808	1049	712	
+oac01	Subgroup	7a3	Asian Communities (3)	#ff9010	1050	713	
+oac01	Subgroup	7b1	Afro-Caribbean Communities (1)	#ff9933	1051	721	
+oac01	Subgroup	7b2	Afro-Caribbean Communities (2)	#ffa13b	1052	722	
