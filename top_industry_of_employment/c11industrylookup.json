@@ -1,0 +1,25 @@
+{
+  "Q02": ["A Agriculture, forestry, fishing", "#00aa00"],
+  "Q03": ["B Mining and quarrying", "#006600"],
+  "Q04": ["C Manufacturing", "#0088ff"],
+  "Q12": ["D Non-water utility supply", "#aacc00"],
+  "Q13": ["E Water supply, sewerage, waste", "#cc7700"],
+  "Q14": ["F Construction", "#995500"],
+  "Q15": ["G Wholesale, retail trade, repair", "#ddddcc"],
+  "Q16": ["H Transport and storage", "#00ffff"],
+  "Q17": ["I Accommodation & food service", "#00ff00"],
+  "Q18": ["J Information and communication", "#8800ff"],
+  "Q19": ["K Financial and insurance", "#ff8800"],
+  "Q20": ["L Real estate", "#888888"],
+  "Q21": ["M Professional, scientific, tech/l", "#ffff00"],
+  "Q22": ["N Administration & support", "#0022aa"],
+  "Q23": ["O Public admin, defence, s/sec.", "#0000ff"],
+  "Q24": ["P Education", "#ff0000"],
+  "Q25": ["Q Human health & social work", "#ffddbb"],
+  "Q26": ["R,S Arts, entz, recreation", "#ff88ff"],
+  "Q27": ["T Households as employers", "#444444"],
+  "Q28": ["U Extraterritorial orgs/bodies", "#770000"],
+  "x": ["Data below threshold", "#a3a3a3"],
+  "y": ["Data not available", "#a4998f"]
+
+}
