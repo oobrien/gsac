@@ -1,5 +1,7 @@
 # Local Internet Content
 
+_These files, description and metadata were downloaded from the CDRC Data Service website on 6 December 2024 and are republished under the UK Open Government Licence (OGL)._
+
 Local Internet Content (LIC) is a methodology (see Python function workbook below) and map to record the volume and reach of archived online content of local interest at the Middle Super Output Level (MSOA) for England and Intermediate Geography (IG) for Scotland. The data used for the map is based on the UK Web Archive and utilises entries of the JISC UK Web Domain Dataset, which is a subset of the Internet Archive and curated by the British Library and includes all the archived webpages under the .uk top level domain, contains a timestamp, the URL of the archived website as well as the British postcode found on each site.
 
 The methodology and dataset can be used to derive a measure for how much local internet content (LIC) exists across the UK and estimate a ‘Radius of Gyration’ (RG) for the geographic reach of websites. This measure refers to a computation of the mean distance between a websites’ set of postcodes (p) by performing the steps in the workbook on the coordinate data.
