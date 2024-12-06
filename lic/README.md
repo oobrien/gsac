@@ -32,6 +32,7 @@ The methodology and dataset can be used to derive a measure for how much local i
 
 | Name | URL |
 | --- | --- |
+| Mapmaker map of the Local Internet Content data (based on licall_crude.csv) | https://mapmaker.cdrc.ac.uk/#/local-internet-content |
 | UK Web Archive | https://www.webarchive.org.uk/ |
 | JISC and the Internet Archive (2013) | JISC UK Web Domain Dataset (1996-2013). The British Library. https://doi.org/10.5259/ukwa.ds.2/1 |
 | Tranos, Emmanouil & Stich, Chrisotph. (2020) | Individual internet usage and the availability of online content of local interest: A multilevel approach. Computers, Environment and Urban Systems. 79. 101371. https://doi.org/10.1016/j.compenvurbsys.2019.101371 |
