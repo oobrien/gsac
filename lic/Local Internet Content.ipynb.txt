@@ -1,0 +1,419 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Calculating Local Internet Content\n",
+    "This notebook details how to calculate the Local Internet Content (LIC) for an arbitraty dataset of geolocated websites. For a detailed explanantion see: \n",
+    ">Tranos, E., & Stich, C. (2020). Individual internet usage and the availability of online content of local interest: A multilevel approach. Computers, Environment and Urban Systems, 79, 101371.\n",
+    "\n",
+    "Notebook written by Christoph Stich (christoph.n.stich [at] gmail.com)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import numpy as np\n",
+    "import pandas as pd\n",
+    "import random"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Get the coordinates of the observations\n",
+    "We use synthetic data to keep it general and to avoid additional dependencies in this notebook."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>Longitude</th>\n",
+       "      <th>Latitude</th>\n",
+       "      <th>Region</th>\n",
+       "      <th>Website</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>0.139736</td>\n",
+       "      <td>0.255095</td>\n",
+       "      <td>8</td>\n",
+       "      <td>57</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>0.982787</td>\n",
+       "      <td>0.609261</td>\n",
+       "      <td>5</td>\n",
+       "      <td>75</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>0.891445</td>\n",
+       "      <td>0.255601</td>\n",
+       "      <td>8</td>\n",
+       "      <td>49</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>0.127262</td>\n",
+       "      <td>0.895435</td>\n",
+       "      <td>3</td>\n",
+       "      <td>65</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>0.021578</td>\n",
+       "      <td>0.336283</td>\n",
+       "      <td>7</td>\n",
+       "      <td>14</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "   Longitude  Latitude  Region  Website\n",
+       "0   0.139736  0.255095       8       57\n",
+       "1   0.982787  0.609261       5       75\n",
+       "2   0.891445  0.255601       8       49\n",
+       "3   0.127262  0.895435       3       65\n",
+       "4   0.021578  0.336283       7       14"
+      ]
+     },
+     "execution_count": 2,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# This is the number of coordinate pairs in total, where each website can have several coordinate pairs\n",
+    "N = 10**4 \n",
+    "# This is the number of unique websites\n",
+    "k = 100\n",
+    "# This is the number of distinct regions each website is part of. \n",
+    "# A region can be a MSOA, a voting district, or any other geographical level of aggregation\n",
+    "g = 10\n",
+    "coords = np.random.rand(N, 2)\n",
+    "ids = np.asarray([random.randint(0, k-1) for _ in range(0, N)], dtype=np.int16)\n",
+    "regions = np.asarray([random.randint(0, g-1) for _ in range(0, N)], dtype=np.int16)\n",
+    "\n",
+    "df = pd.DataFrame({\"Longitude\": coords[:, 0], \"Latitude\": coords[:, 1],\n",
+    "                   \"Region\": regions, \"Website\": ids})\n",
+    "df.head()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Radius of Gyration - $R_G$\n",
+    "\n",
+    "We use the $R_G$ as defined in Gonzalez 2008 to weigh our observations.\n",
+    "\n",
+    "https://www.nature.com/articles/nature06958?draft=journal&proof=trueIn#Sec2"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def radius_of_gyration(coords):\n",
+    "    \"\"\"\n",
+    "    This is taken from the appendix from Gonzalez 2008\n",
+    "    https://www.nature.com/articles/nature06958?draft=journal&proof=trueIn#Sec2\n",
+    "    \n",
+    "    Make sure to use a projection that allows for somewhat accurate calcuation\n",
+    "    of distances when passing coordinates to this function or alternatively use\n",
+    "    the Haversine instead of the Euclidean distance to calculate the distances\n",
+    "    \"\"\"\n",
+    "    center = coords.mean(axis=0)\n",
+    "    r = np.mean(np.sum((coords - center)**2, axis=1))**(1/2)\n",
+    "    return r"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Calculate $R_G$ for each website "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>Longitude</th>\n",
+       "      <th>Latitude</th>\n",
+       "      <th>Region</th>\n",
+       "      <th>Website</th>\n",
+       "      <th>Weight</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>0.139736</td>\n",
+       "      <td>0.255095</td>\n",
+       "      <td>8</td>\n",
+       "      <td>57</td>\n",
+       "      <td>0.712531</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>0.982787</td>\n",
+       "      <td>0.609261</td>\n",
+       "      <td>5</td>\n",
+       "      <td>75</td>\n",
+       "      <td>0.702449</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>0.891445</td>\n",
+       "      <td>0.255601</td>\n",
+       "      <td>8</td>\n",
+       "      <td>49</td>\n",
+       "      <td>0.721467</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>0.127262</td>\n",
+       "      <td>0.895435</td>\n",
+       "      <td>3</td>\n",
+       "      <td>65</td>\n",
+       "      <td>0.706844</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>0.021578</td>\n",
+       "      <td>0.336283</td>\n",
+       "      <td>7</td>\n",
+       "      <td>14</td>\n",
+       "      <td>0.709748</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "   Longitude  Latitude  Region  Website    Weight\n",
+       "0   0.139736  0.255095       8       57  0.712531\n",
+       "1   0.982787  0.609261       5       75  0.702449\n",
+       "2   0.891445  0.255601       8       49  0.721467\n",
+       "3   0.127262  0.895435       3       65  0.706844\n",
+       "4   0.021578  0.336283       7       14  0.709748"
+      ]
+     },
+     "execution_count": 4,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "w_d = dict()\n",
+    "for i in range(k):\n",
+    "    mask = ids == i\n",
+    "    assert sum(mask) > 0\n",
+    "    r = radius_of_gyration(df[mask][[\"Longitude\", \"Latitude\"]])\n",
+    "    # The weights for each website are then just 1/(r+1).\n",
+    "    # If you want to change the units of R, for example from meters to kilometers\n",
+    "    # this is the place to do it.\n",
+    "    w_d[i] = 1/(r+1)\n",
+    "    \n",
+    "weights = np.vectorize(w_d.get)(df[\"Website\"])\n",
+    "assert sum(np.isnan(weights)) == 0\n",
+    "df[\"Weight\"] = weights\n",
+    "df.head()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Calculating Local Internet Content\n",
+    "We can use the DataFrame with the weights to calculate the LIC for each region. If we want, to do more advanced spatial operations with the weights we can alternatively put everything in a GeoPandas dataframe as well.\n",
+    "\n",
+    "Once we hve the weights, the LIC is then simply a sum over the weighted observation in each group/region"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>LIC</th>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>Region</th>\n",
+       "      <th></th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>692.677940</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>704.164014</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>720.818006</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>726.781329</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>685.619129</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>5</th>\n",
+       "      <td>686.754685</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>6</th>\n",
+       "      <td>752.899221</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>7</th>\n",
+       "      <td>726.102125</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>8</th>\n",
+       "      <td>699.320465</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>9</th>\n",
+       "      <td>716.272337</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "               LIC\n",
+       "Region            \n",
+       "0       692.677940\n",
+       "1       704.164014\n",
+       "2       720.818006\n",
+       "3       726.781329\n",
+       "4       685.619129\n",
+       "5       686.754685\n",
+       "6       752.899221\n",
+       "7       726.102125\n",
+       "8       699.320465\n",
+       "9       716.272337"
+      ]
+     },
+     "execution_count": 5,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "lic = df[[\"Weight\", \"Region\"]].groupby(\"Region\").sum()\n",
+    "lic.columns = [\"LIC\"]\n",
+    "lic"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.7.3"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}
