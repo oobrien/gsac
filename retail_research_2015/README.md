@@ -1,3 +1,5 @@
+_These files, description and metadata were downloaded from the CDRC Data Service website on 17 December 2024 and are republished under the UK Open Government Licence (OGL)._
+
 This record contains legacy Open data resources and corresponding files historically published by CDRC which are not part of CDRC's current work but are retained on CDRC Data for research reproduceability purposes. Please see each resource page for its description. Each data resource has a DOI attached to it.
 
 ### Pre and Post Recession Town Centre Statistics
