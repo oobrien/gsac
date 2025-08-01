@@ -1,4 +1,4 @@
-Some datasets from various projects at UCL Geography's Geospatial Analysis and Computing (GSAC) research cluster.
+Some datasets from various projects at UCL Geography's Geospatial Analysis and Computing (GSAC) research cluster, mostly relating to the former Consumer Data Research Centre (CDRC). 
 
 Mostly, these are open datasets which were not included with Version 2 of CDRC Data (https://data.cdrc.ac.uk/), so are included here instead of being deleted with the decommissioning of the old website. There are also a few which were retired along with CDRC in early 2025, but because CDRC acted as the canonical data store, they have been retained here so that the data is not lost. 
 
